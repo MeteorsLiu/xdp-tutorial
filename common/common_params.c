@@ -110,6 +110,9 @@ void parse_cmdline_args(int argc, char **argv,
 				goto error;
 			}
 			break;
+        case 4:
+            cfg->key = (__u32)atoi(optarg);
+            break;
 		case 'r':
 			if (strlen(optarg) >= IF_NAMESIZE) {
 				fprintf(stderr, "ERR: --redirect-dev name too long\n");

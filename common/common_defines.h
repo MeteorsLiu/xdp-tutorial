@@ -23,6 +23,7 @@ struct config {
 	__u16 xsk_bind_flags;
 	int xsk_if_queue;
 	bool xsk_poll_mode;
+	__u32 key;
 };
 
 /* Defined in common_params.o */
