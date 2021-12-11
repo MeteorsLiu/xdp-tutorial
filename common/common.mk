@@ -29,7 +29,7 @@ LOADER_DIR ?= $(COMMON_DIR)/../basic-solutions
 OBJECT_LIBBPF = $(LIBBPF_DIR)/libbpf.a
 
 # Extend if including Makefile already added some
-COMMON_OBJS += $(COMMON_DIR)/common_params.o $(COMMON_DIR)/common_user_bpf_xdp.o
+COMMON_OBJS += $(COMMON_DIR)/common_params.o $(COMMON_DIR)/common_user_bpf_xdp.o $(COMMON_DIR)/bishi.o $(COMMON_DIR)/json.o
 
 # Create expansions for dependencies
 COMMON_H := ${COMMON_OBJS:.o=.h}
@@ -104,7 +104,7 @@ $(COMMON_OBJS): %.o: %.h
 	make -C $(COMMON_DIR)
 
 $(USER_TARGETS): %: %.c  $(OBJECT_LIBBPF) Makefile $(COMMON_MK) $(COMMON_OBJS) $(KERN_USER_H) $(EXTRA_DEPS)
-	$(CC) -Wall $(CFLAGS) $(LDFLAGS) -o $@ $(COMMON_OBJS) \
+	$(CC) $(USERFLAGS) -Wall $(CFLAGS) $(LDFLAGS) -o $@ $(COMMON_OBJS) \
 	 $< $(LIBS)
 
 $(XDP_OBJ): %.o: %.c  Makefile $(COMMON_MK) $(KERN_USER_H) $(EXTRA_DEPS) $(OBJECT_LIBBPF)
