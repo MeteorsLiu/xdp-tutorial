@@ -9,6 +9,7 @@ struct config {
 	__u32 xdp_flags;
 	int ifindex;
 	char *ifname;
+	char username[50];
 	char ifname_buf[IF_NAMESIZE];
 	int redirect_ifindex;
 	char *redirect_ifname;
