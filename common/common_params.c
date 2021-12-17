@@ -111,7 +111,7 @@ void parse_cmdline_args(int argc, char **argv,
 			}
 			break;
         case 4:
-            cfg->key = (__u32)atoi(optarg);
+            strncpy(cfg->username, optarg, 50);
             break;
 		case 'r':
 			if (strlen(optarg) >= IF_NAMESIZE) {
